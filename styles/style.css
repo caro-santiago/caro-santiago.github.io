@@ -21,7 +21,7 @@
   --boton-fondo: #efefef;      /* gris de los botones */
   --boton-borde: #767676;
 
-  --fuente: Arial, Helvetica, sans-serif;
+  --fuente: Helvetica Narrow, Arial Narrow, sans-serif;
 
   /* Tamaños de texto: solo tres */
   --tamano-base: 0.875rem;     /* texto normal (14px) */
@@ -84,11 +84,11 @@ h3 span {
 
 
 /* 4. ENLACES
-   Azules y subrayados. */
+   Azules. */
 a {
   
   color: var(--enlace);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a:hover {
