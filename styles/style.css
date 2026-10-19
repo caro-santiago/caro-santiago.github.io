@@ -1,0 +1,201 @@
+/* ==========================================================
+   ESTILOS DE GATO VOLADOR
+   Inspirado en el aspecto de mindyseu.com: casi no hay diseño
+   "agregado". Se ve como una página básica, con muy pocos
+   toques (títulos resaltados, botones grises, fotos en fila).
+
+   Léelo de arriba hacia abajo: primero las decisiones
+   (variables) y después cómo se aplican a cada parte.
+   ========================================================== */
+
+
+/* 1. VARIABLES
+   Aquí viven todas las decisiones de diseño.
+   Si cambias un valor, cambia en todo el sitio. */
+:root {
+  --fondo: #ffffff;
+  --texto: #000000;
+  --enlace: #0000ee;           /* el azul clásico de los enlaces */
+  --resaltado: #00ff00;        /* el verde de los títulos */
+
+  --boton-fondo: #efefef;      /* gris de los botones */
+  --boton-borde: #767676;
+
+  --fuente: Arial, Helvetica, sans-serif;
+
+  /* Tamaños de texto: solo tres */
+  --tamano-base: 0.875rem;     /* texto normal (14px) */
+  --tamano-chico: 0.7rem;      /* pies de foto */
+  --tamano-mini: 0.65rem;      /* nota final */
+
+  --ancho: none;               /* "none" = ocupa todo el ancho, como el sitio de referencia.
+                                  Para limitar el ancho del texto prueba con 60rem. */
+  --margen: 0.6rem;            /* espacio a los lados */
+  --alto-imagen: 10rem;        /* todas las fotos tienen la misma altura */
+}
+
+
+/* 2. BASE
+   Estilos generales para toda la página. */
+body {
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--fuente);
+  font-size: var(--tamano-base);
+  line-height: 1.3;
+
+  max-width: var(--ancho);
+  margin: 0;
+  padding: var(--margen) var(--margen) 3rem;
+}
+
+p {
+  margin: 0.4rem 0 0;
+}
+
+
+/* 3. TÍTULOS
+   Los tres niveles se ven igual: texto normal, en mayúsculas,
+   con fondo verde que solo cubre el texto. */
+h1,
+h2,
+h3 {
+  display: block;
+  width: fit-content;          /* el verde se ajusta al largo del texto */
+  background: var(--resaltado);
+  font-size: var(--tamano-base);
+  font-weight: normal;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+h1 {
+  margin-bottom: 0.6rem;
+}
+
+h2 {
+  margin: 2.5rem 0 0.4rem;
+}
+
+/* El tipo de trabajo, entre paréntesis dentro del título, queda en minúsculas */
+h3 span {
+  text-transform: none;
+}
+
+
+/* 4. ENLACES
+   Azules y subrayados. */
+a {
+  
+  color: var(--enlace);
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Cuando se navega con teclado, el enlace activo se ve claramente */
+a:focus-visible {
+  outline: 2px solid var(--enlace);
+  outline-offset: 2px;
+}
+
+
+/* 5. BOTONES
+   Los enlaces del menú y los de cada proyecto se ven como botones grises.
+   Para convertir cualquier enlace en botón, agrégale class="boton". */
+.enlaces a,
+.boton{
+  display: inline-block;
+  background: #efefef;
+  border: 1px solid #767676;
+  border-radius: 3px;
+  padding: 1px 6px;        /* Chrome's default button padding */
+  color: #000;
+  font: inherit;           /* same font and size as the surrounding text */
+  text-decoration: none;
+}
+
+.enlaces a:hover,
+.boton:hover {
+  background: #e5e5e5;
+  border-color: #4f4f4f;
+}
+
+.enlaces a:active,
+.boton:active {
+  background: #f5f5f5;
+  border-color: #767676;
+}
+
+
+/* 6. PROYECTOS
+   Cada proyecto: una fila con título y botones, un párrafo y una fila de fotos. */
+.proyecto {
+  margin-top: 2rem;
+}
+
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.4rem;
+}
+
+
+/* 7. IMÁGENES
+   Fotos en fila, todas de la misma altura, con poco espacio entre ellas.
+   Cuando no caben en la pantalla, pasan a la línea siguiente. */
+.imagenes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem 0.5rem;
+  margin-top: 1rem;
+}
+
+figure {
+  margin: 0;
+}
+
+img {
+  display: block;
+  height: var(--alto-imagen);
+  width: auto;
+}
+
+figcaption {
+  font-size: var(--tamano-chico);
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+
+/* 8. LISTAS
+   Con viñetas, compactas. */
+ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.5rem;
+}
+
+
+/* 9. PIE DE PÁGINA */
+footer {
+  margin-top: 3rem;
+  font-size: var(--tamano-mini);
+}
+
+
+/* 10. CELULARES
+   En pantallas angostas, las fotos ocupan todo el ancho. */
+@media (max-width: 40rem) {
+  figure {
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
