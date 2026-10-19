@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+    <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Galería multidireccional infinita (demo)</title>
+        <style>
+        :root{
+        --cell-size: 280px; /* tamaño de cada imagen cuadrada */
+        --gap: 12px;
+        --cols: 7; /* número de columnas visibles + buffer */
+        --rows: 7; /* número de filas visibles + buffer */
+        }
+        *{box-sizing:border-box}
+        html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial}
+
+
+        /* stage: área que contiene la grilla virtual */
+        .stage{
+        width:100vw;height:100vh;overflow:hidden;position:relative;background:#0f1722;color:#fff;
+        touch-action: none; /* importante para pan con pointer */
+        cursor: grab;
+        }
+        .stage:active{cursor:grabbing}
+
+
+        /* espacio donde colocamos las celdas que se transforman para simular panning infinito */
+        .viewport{
+        position:absolute;left:50%;top:50%;transform:translate(-50%,-50%); will-change:transform;
+        }
+
+
+        /* cada celda es un contenedor cuadrado con la imagen dentro */
+        .cell{
+        position:absolute;width:var(--cell-size);height:var(--cell-size);overflow:hidden;border-radius:10px;
+        box-shadow:0 6px 18px rgba(2,6,23,0.6);background:#111;display:flex;align-items:center;justify-content:center;
+        transition:transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms;backface-visibility:hidden;
+        }
+        .cell img{width:100%;height:100%;object-fit:cover;display:block;user-select:none;pointer-events:none}
+        .cell:hover{transform:scale(1.04);box-shadow:0 14px 36px rgba(2,6,23,0.7)}
+
+
+        /* overlay para instrucciones */
+        .ui{
+        position:fixed;left:12px;bottom:12px;background:rgba(10,12,15,0.6);padding:8px 12px;border-radius:10px;font-size:13px;color:#ccd6f6
+        }
+        .ui b{display:inline-block;margin-right:6px}
+
+
+        /* small screens adjustments */
+        @media (max-width:700px){:root{--cell-size:160px;--cols:5;--rows:5}}
+        </style>
+    </head>
+<body>
+<div class="stage" id="stage">
+<div id="viewport" class="viewport" aria-hidden="true"></div>
+<div class="ui" id="ui">Arrastra para mover • Rueda/scroll para desplazarte • Haz zoom con la rueda+Ctrl</div>
+</div>
+
+
+<script>
+/*
+Galería multidireccional 'infinita' (demo):
+- Creamos una cuadrícula fija de celdas (rows x cols)
+- Reposicionamos las celdas al moverse el 'offset' en unidades de celda para reciclarlas
+- Cada celda toma una imagen calculada por un índice virtual basado en su coordenada de celda + offset
+- El resultado es una experiencia de pan continuo que parece infinita
+*/
+</html>
