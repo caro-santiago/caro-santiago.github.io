@@ -21,7 +21,7 @@
   --boton-fondo: #efefef;      /* gris de los botones */
   --boton-borde: #767676;
 
-  --fuente: Arial, Helvetica, sans-serif;
+  --fuente: Arial Narrow, Helvetica, sans-serif;
 
   /* Tamaños de texto: solo tres */
   --tamano-base: 0.875rem;     /* texto normal (14px) */
@@ -84,9 +84,8 @@ h3 span {
 
 
 /* 4. ENLACES
-   Azules. */
+   Azules y subrayados. */
 a {
-  
   color: var(--enlace);
   text-decoration: none;
 }
@@ -106,14 +105,14 @@ a:focus-visible {
    Los enlaces del menú y los de cada proyecto se ven como botones grises.
    Para convertir cualquier enlace en botón, agrégale class="boton". */
 .enlaces a,
-.boton{
+.boton {
   display: inline-block;
-  background: #efefef;
-  border: 1px solid #767676;
+  background: var(--boton-fondo);
+  border: 1px solid var(--boton-borde);
   border-radius: 3px;
-  padding: 1px 6px;        /* Chrome's default button padding */
-  color: #000;
-  font: inherit;           /* same font and size as the surrounding text */
+  padding: 1px 6px;
+  color: var(--texto);
+  font: inherit;               /* misma letra y tamaño que el texto de alrededor */
   text-decoration: none;
 }
 
@@ -126,7 +125,19 @@ a:focus-visible {
 .enlaces a:active,
 .boton:active {
   background: #f5f5f5;
-  border-color: #767676;
+  border-color: var(--boton-borde);
+}
+
+/* Menú: la lista se muestra en una fila, sin viñetas.
+   IMPORTANTE: esta regla es la que convierte la lista en botones en fila.
+   Si la borras, el menú vuelve a verse como lista con viñetas. */
+.enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -147,6 +158,9 @@ a:focus-visible {
 /* 7. IMÁGENES
    Fotos en fila, todas de la misma altura, con poco espacio entre ellas.
    Cuando no caben en la pantalla, pasan a la línea siguiente. */
+
+
+
 .imagenes {
   display: flex;
   flex-wrap: wrap;
@@ -165,6 +179,16 @@ img {
   width: auto;
 }
 
+.media {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem 0.5rem;
+  margin-top: 1rem;
+  max-height: 5rem;
+  max-width: fit-content;
+}
+
 figcaption {
   font-size: var(--tamano-chico);
   text-transform: uppercase;
@@ -175,8 +199,10 @@ figcaption {
 /* 8. LISTAS
    Con viñetas, compactas. */
 ul {
-  margin: 0.4rem 0 0;
-  padding-left: 1.5rem;
+  list-style: none;
+  margin: 0.4rem 0 ;
+  padding-left: 0rem;
+  
 }
 
 
