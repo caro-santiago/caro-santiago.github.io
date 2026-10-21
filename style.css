@@ -21,7 +21,7 @@
   --boton-fondo: #efefef;      /* gris de los botones */
   --boton-borde: #767676;
 
-  --fuente: Arial Narrow, Helvetica, sans-serif;
+  --fuente: Arial W05 Narrow, Helvetica, sans-serif;
 
   /* Tamaños de texto: solo tres */
   --tamano-base: 0.875rem;     /* texto normal (14px) */
@@ -160,7 +160,6 @@ a:focus-visible {
    Cuando no caben en la pantalla, pasan a la línea siguiente. */
 
 
-
 .imagenes {
   display: flex;
   flex-wrap: wrap;
@@ -179,7 +178,7 @@ img {
   width: auto;
 }
 
-.media {
+.thumbnail {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -188,6 +187,8 @@ img {
   max-height: 5rem;
   max-width: fit-content;
 }
+
+
 
 figcaption {
   font-size: var(--tamano-chico);
@@ -203,6 +204,19 @@ ul {
   margin: 0.4rem 0 ;
   padding-left: 0rem;
   
+}
+
+.media {
+  display: flex;
+  flex-wrap:unset;
+  align-items: center;
+  gap: 1rem 0.5rem;
+  margin-top: 1rem;
+}
+
+.media-item {
+  
+
 }
 
 
